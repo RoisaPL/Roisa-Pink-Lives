@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Tabela de Punições ✨</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --rosa-claro: #FFF0F5;
+            --rosa-medio: #FFB6C1;
+            --rosa-escuro: #D23369;
+            --rosa-gradient: linear-gradient(135deg, #FF9BB3, #D23369);
+            --sombra: 0 6px 20px rgba(210, 51, 105, 0.15);
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, sans-serif;
+            background-color: #FFF9FB;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            background-image: radial-gradient(var(--rosa-claro) 2px, transparent 2px);
+            background-size: 20px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: var(--rosa-escuro);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1:before, h1:after {
+            content: "✧";
+            color: var(--rosa-medio);
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+
+        .punishment-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: var(--sombra);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            background: white;
+            position: relative;
+        }
+
+        .punishment-table:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: var(--rosa-gradient);
+            z-index: -1;
+            border-radius: 20px;
+            filter: blur(10px);
+            opacity: 0.4;
+        }
+
+        .punishment-table thead {
+            background: var(--rosa-gradient);
+            color: white;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .punishment-table th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .punishment-table th:not(:last-child):after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .punishment-table td {
+            padding: 15px;
+            border-bottom: 1px solid #FFE5EE;
+            position: relative;
+        }
+
+        .punishment-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .punishment-table tbody tr:nth-child(even) {
+            background-color: var(--rosa-claro);
+        }
+
+        .punishment-table tbody tr:hover {
+            background-color: #FFE5EE;
+            transform: scale(1.005);
+            box-shadow: 0 3px 10px rgba(210, 51, 105, 0.1);
+        }
+
+        .punishment-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ban {
+            color: var(--rosa-escuro);
+            font-weight: 700;
+            background: rgba(210, 51, 105, 0.1);
+            padding: 5px 10px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .timeout {
+            color: #FF6B9D;
+            font-weight: 600;
+            background: rgba(255, 107, 157, 0.1);
+            padding: 5px 10px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .note {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9em;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .note:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .infraction-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.2em;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .warning {
+            color: #FFA500;
+        }
+
+        .danger {
+            color: var(--rosa-escuro);
+        }
+
+        .info {
+            color: #6B8EFF;
+        }
+
+        .entertainment {
+            color: #9B59B6;
+        }
+
+        @media (max-width: 768px) {
+            .punishment-table {
+                border-radius: 12px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .punishment-table th, 
+            .punishment-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Punições Timeouts & Banimentos</h1>
+        
+        <table class="punishment-table">
+            <thead>
+                <tr>
+                    <th>Infrações</th>
+                    <th>Primeira Vez</th>
+                    <th>Reincidência</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon danger"><i class="fas fa-user-slash"></i></span>
+                            <span>Uso proposital de nome/pronomes errados</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> Permanente</span></td>
+                    <td class="note">Erros repetidos = desrespeito</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon danger"><i class="fas fa-grin-squint-tears"></i></span>
+                            <span>Piadas transfóbicas ou "Humor negro"</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 30 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> Permanente</span></td>
+                    <td class="note">Humor transfóbico não tem graça</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon warning"><i class="fas fa-question-circle"></i></span>
+                            <span>Perguntas invasivas sobre transição/corpo</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 10 min</span></td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 1h ou <i class="fas fa-ban"></i></span></td>
+                    <td class="note">Educativo na primeira, severo depois</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon danger"><i class="fas fa-radiation-alt"></i></span>
+                            <span>Discurso de ódio (Racismo, Homofobia, etc.)</span>
+                        </div>
+                    </td>
+                    <td><span class="ban"><i class="fas fa-skull-crossbones"></i> Imediato</span></td>
+                    <td></td>
+                    <td class="note">Tolerância zero absoluta</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon danger"><i class="fas fa-heart-broken"></i></span>
+                            <span>Sexualização ou fetichização</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 1h</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> Permanente</span></td>
+                    <td class="note">Respeite os limites</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon warning"><i class="fas fa-surprise"></i></span>
+                            <span>Spoilers (jogos/filmes/séries)</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15/30 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
+                    <td class="note">Depende da gravidade</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon warning"><i class="fas fa-comment-dots"></i></span>
+                            <span>Flood/Spam/CAPS abusivo</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 5 min</span></td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min ou <i class="fas fa-ban"></i></span></td>
+                    <td class="note">Mantenha o chat respirável</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon warning"><i class="fas fa-link"></i></span>
+                            <span>Links não autorizados</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
+                    <td class="note">Segurança em primeiro lugar</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon info"><i class="fas fa-gamepad"></i></span>
+                            <span>Pressionar gameplay</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
+                    <td class="note">O streamer joga como quiser!</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon entertainment"><i class="fas fa-film"></i></span>
+                            <span>Pressionar filmes/séries</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
+                    <td class="note">O streamer vê como quiser!</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="infraction-cell">
+                            <span class="icon info"><i class="fas fa-chess-knight"></i></span>
+                            <span>Backseat gaming (ditar jogadas)</span>
+                        </div>
+                    </td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min</span></td>
+                    <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
+                    <td class="note">Deixe o streamer aprender sozinho!</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
