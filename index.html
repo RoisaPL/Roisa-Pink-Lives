@@ -167,6 +167,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .infraction-cell:hover {
+            color: var(--rosa-escuro);
         }
 
         .icon {
@@ -189,6 +195,33 @@
 
         .entertainment {
             color: #9B59B6;
+        }
+
+        /* Estilos para a expansão de detalhes */
+        .details-row {
+            display: none;
+        }
+
+        .details-row.active {
+            display: table-row;
+            animation: fadeInDetails 0.4s ease;
+        }
+
+        @keyframes fadeInDetails {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .details-content {
+            padding: 20px;
+            background-color: #FFF9FB;
+            border-left: 4px solid var(--rosa-escuro);
+        }
+
+        .details-content p {
+            margin: 0;
+            color: #555;
+            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
@@ -221,7 +254,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- Linha 1 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon danger"><i class="fas fa-user-slash"></i></span>
@@ -232,7 +266,16 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> Permanente</span></td>
                     <td class="note">Erros repetidos = desrespeito</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Esta infração se aplica quando um espectador insiste em usar nomes ou pronomes incorretos após ter sido corrigido. A primeira vez é considerada um timeout educativo, mas reincidências mostram desrespeito intencional e resultam em banimento permanente.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 2 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon danger"><i class="fas fa-grin-squint-tears"></i></span>
@@ -243,7 +286,16 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> Permanente</span></td>
                     <td class="note">Humor transfóbico não tem graça</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Piadas que ridicularizam pessoas trans ou usam estereótipos prejudiciais não são toleradas. Mesmo que aleguem ser "apenas humor", esse tipo de conteúdo cria um ambiente hostil e será punido severamente.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 3 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon warning"><i class="fas fa-question-circle"></i></span>
@@ -254,7 +306,16 @@
                     <td><span class="timeout"><i class="fas fa-clock"></i> 1h ou <i class="fas fa-ban"></i></span></td>
                     <td class="note">Educativo na primeira, severo depois</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Perguntas sobre procedimentos médicos, genitália ou outros aspectos íntimos da transição são inapropriadas. A primeira infração serve como aviso educativo, mas perguntas repetidas ou insistentes resultarão em punições mais severas.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 4 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon danger"><i class="fas fa-radiation-alt"></i></span>
@@ -265,7 +326,16 @@
                     <td></td>
                     <td class="note">Tolerância zero absoluta</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Qualquer forma de discurso de ódio contra grupos marginalizados resultará em banimento imediato e permanente. Isso inclui mas não se limita a racismo, homofobia, transfobia, misoginia, antissemitismo e outras formas de intolerância.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 5 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon danger"><i class="fas fa-heart-broken"></i></span>
@@ -276,7 +346,16 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> Permanente</span></td>
                     <td class="note">Respeite os limites</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Comentários que objetificam ou fetichizam pessoas trans são inaceitáveis. Isso inclui referências não solicitadas à aparência de maneira sexualizada ou comentários sobre "traps", "shemales" ou outros termos fetichistas.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 6 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon warning"><i class="fas fa-surprise"></i></span>
@@ -287,7 +366,16 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
                     <td class="note">Depende da gravidade</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Revelar elementos importantes da trama sem aviso é prejudicial à experiência de todos. A gravidade da punição depende do contexto - spoilers de conteúdos recentes ou muito aguardados terão consequências mais severas.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 7 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon warning"><i class="fas fa-comment-dots"></i></span>
@@ -298,7 +386,16 @@
                     <td><span class="timeout"><i class="fas fa-clock"></i> 15 min ou <i class="fas fa-ban"></i></span></td>
                     <td class="note">Mantenha o chat respirável</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Encher o chat com mensagens repetitivas, spams ou uso excessivo de letras maiúsculas atrapalha a conversa para todos. A primeira infração é leve, mas spams persistentes podem resultar em banimento.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 8 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon warning"><i class="fas fa-link"></i></span>
@@ -309,7 +406,16 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
                     <td class="note">Segurança em primeiro lugar</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Compartilhar links sem permissão pode colocar outros espectadores em risco. Links suspeitos ou maliciosos resultarão em banimento imediato. Mesmo links aparentemente inofensivos precisam de aprovação dos moderadores.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 9 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon info"><i class="fas fa-gamepad"></i></span>
@@ -320,7 +426,16 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
                     <td class="note">O streamer joga como quiser!</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Insistir para que o streamer jogue de determinada maneira ou critique suas escolhas no jogo é desrespeitoso. O streamer tem o direito de jogar como preferir, e comentários persistentes sobre "como jogar corretamente" não serão tolerados.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 10 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon entertainment"><i class="fas fa-film"></i></span>
@@ -331,19 +446,63 @@
                     <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
                     <td class="note">O streamer vê como quiser!</td>
                 </tr>
-                <tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Assim como com jogos, pressionar o streamer para assistir determinados conteúdos ou criticar suas escolhas de entretenimento é desnecessário. Comentários ocasionais são aceitáveis, mas insistência repetida será punida.</p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Linha 11 -->
+                <tr class="infraction-row">
                     <td>
                         <div class="infraction-cell">
                             <span class="icon info"><i class="fas fa-chess-knight"></i></span>
-                            <span>Backseat gaming (ditar jogadas)</span>
+                            <span>Backseat gaming</span>
                         </div>
                     </td>
                     <td><span class="timeout"><i class="fas fa-clock"></i> 15 min</span></td>
                     <td><span class="ban"><i class="fas fa-ban"></i> 24h/perma</span></td>
                     <td class="note">Deixe o streamer aprender sozinho!</td>
                 </tr>
+                <tr class="details-row">
+                    <td colspan="4">
+                        <div class="details-content">
+                            <p><strong>Detalhes:</strong> Dar instruções não solicitadas sobre como jogar, especialmente quando o streamer já pediu para não fazerem isso, arruína a experiência. A primeira infração serve como aviso, mas backseat gaming persistente resultará em banimentos mais longos.</p>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const infractionRows = document.querySelectorAll('.infraction-row');
+            
+            infractionRows.forEach(row => {
+                // Adiciona o evento de clique à célula da infração
+                const infractionCell = row.querySelector('.infraction-cell');
+                infractionCell.addEventListener('click', function(e) {
+                    // Impede que o clique se propague para a linha inteira
+                    e.stopPropagation();
+                    
+                    // Encontra a próxima linha de detalhes
+                    const detailsRow = row.nextElementSibling;
+                    
+                    // Fecha todos os outros detalhes abertos primeiro
+                    document.querySelectorAll('.details-row.active').forEach(openRow => {
+                        if (openRow !== detailsRow) {
+                            openRow.classList.remove('active');
+                        }
+                    });
+                    
+                    // Alterna a visibilidade dos detalhes para esta linha
+                    detailsRow.classList.toggle('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
