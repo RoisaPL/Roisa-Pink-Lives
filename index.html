@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Tabela de Punições </title>
+    <title>Tabela de Punições</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="https://media.discordapp.net/attachments/1191749410665795704/1374817920969871420/Cheer1000.png?ex=68355d37&is=68340bb7&hm=be721c71840e75b7481d6ba6f16608ddd96682b32caed262314df68afee3ecf8&=&format=webp&quality=lossless&width=800&height=800" type="image/png">
     <style>
@@ -24,11 +24,13 @@
             justify-content: center;
             background-image: radial-gradient(var(--rosa-claro) 2px, transparent 2px);
             background-size: 20px 20px;
+            overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px; /* Aumentado para acomodar melhor o conteúdo */
             width: 100%;
+            min-width: 300px; /* Garante que não fique muito estreito */
             animation: fadeIn 0.8s ease;
         }
 
@@ -57,6 +59,7 @@
 
         .punishment-table {
             width: 100%;
+            min-width: 800px; /* Garante que a tabela não fique muito estreita */
             border-collapse: separate;
             border-spacing: 0;
             box-shadow: var(--sombra);
@@ -65,6 +68,7 @@
             margin-bottom: 40px;
             background: white;
             position: relative;
+            table-layout: fixed; /* Melhora a distribuição das colunas */
         }
 
         .punishment-table:before {
@@ -107,10 +111,17 @@
             background: rgba(255,255,255,0.3);
         }
 
+        /* Ajustes nas larguras das colunas - MODIFICADO PARA AUMENTAR REINCIDÊNCIA */
+        .punishment-table th:nth-child(1) { width: 38%; } /* Infrações */
+        .punishment-table th:nth-child(2) { width: 18%; } /* Primeira Vez */
+        .punishment-table th:nth-child(3) { width: 24%; } /* Reincidência (aumentado) */
+        .punishment-table th:nth-child(4) { width: 20%; } /* Notas */
+
         .punishment-table td {
             padding: 15px;
             border-bottom: 1px solid #FFE5EE;
             position: relative;
+            word-wrap: break-word; /* Quebra palavras longas */
         }
 
         .punishment-table tbody tr {
@@ -138,6 +149,7 @@
             padding: 5px 10px;
             border-radius: 50px;
             display: inline-block;
+            white-space: nowrap; /* Impede que o texto quebre */
         }
 
         .timeout {
@@ -147,6 +159,7 @@
             padding: 5px 10px;
             border-radius: 50px;
             display: inline-block;
+            white-space: nowrap; /* Impede que o texto quebre */
         }
 
         .note {
@@ -180,22 +193,24 @@
             font-size: 1.2em;
             min-width: 24px;
             text-align: center;
+            flex-shrink: 0; /* Impede que o ícone diminua */
+            color: var(--rosa-escuro); /* TODOS OS ÍCONES EM ROSA */
         }
 
         .warning {
-            color: #FFA500;
+            color: var(--rosa-escuro); /* Alterado para rosa */
         }
 
         .danger {
-            color: var(--rosa-escuro);
+            color: var(--rosa-escuro); /* Já estava rosa */
         }
 
         .info {
-            color: #6B8EFF;
+            color: var(--rosa-escuro); /* Alterado para rosa */
         }
 
         .entertainment {
-            color: #9B59B6;
+            color: var(--rosa-escuro); /* Alterado para rosa */
         }
 
         /* Estilos para a expansão de detalhes */
@@ -225,18 +240,58 @@
             line-height: 1.6;
         }
 
+        @media (max-width: 992px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .punishment-table th, 
+            .punishment-table td {
+                padding: 12px 10px;
+                font-size: 0.95em;
+            }
+            
+            .punishment-table th:nth-child(1) { width: 35%; }
+            .punishment-table th:nth-child(2) { width: 18%; }
+            .punishment-table th:nth-child(3) { width: 24%; } /* Ajuste para mobile */
+            .punishment-table th:nth-child(4) { width: 23%; }
+        }
+
         @media (max-width: 768px) {
-            .punishment-table {
-                border-radius: 12px;
+            body {
+                padding: 10px 5px;
             }
             
             h1 {
                 font-size: 1.8em;
             }
             
+            .punishment-table {
+                border-radius: 12px;
+                min-width: 600px; /* Permite rolagem horizontal */
+            }
+            
             .punishment-table th, 
             .punishment-table td {
-                padding: 12px 8px;
+                padding: 10px 8px;
+                font-size: 0.9em;
+            }
+            
+            .infraction-cell {
+                gap: 8px;
+            }
+            
+            .icon {
+                font-size: 1em;
+            }
+            
+            .note {
+                font-size: 0.85em;
+                padding-left: 18px;
             }
         }
     </style>
@@ -304,7 +359,7 @@
                         </div>
                     </td>
                     <td><span class="timeout"><i class="fas fa-clock"></i> 10 min</span></td>
-                    <td><span class="timeout"><i class="fas fa-clock"></i> 1h ou <i class="fas fa-ban"> Permanente</i></span></td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 1h ou <i class="fas fa-ban"></i> Permanente</span></td>
                     <td class="note">Educativo na primeira, severo depois</td>
                 </tr>
                 <tr class="details-row">
@@ -384,7 +439,7 @@
                         </div>
                     </td>
                     <td><span class="timeout"><i class="fas fa-clock"></i> 5 min</span></td>
-                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min ou <i class="fas fa-ban"> Permanente</i></span></td>
+                    <td><span class="timeout"><i class="fas fa-clock"></i> 15 min ou <i class="fas fa-ban"></i> Permanente</span></td>
                     <td class="note">Mantenha o chat respirável</td>
                 </tr>
                 <tr class="details-row">
