@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Punições</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://media.discordapp.net/attachments/1191749410665795704/1374817920969871420/Cheer1000.png?ex=68355d37&is=68340bb7&hm=be721c71840e75b7481d6ba6f16608ddd96682b32caed262314df68afee3ecf8&=&format=webp&quality=lossless&width=800&height=800" type="image/png">
     <style>
         :root {
@@ -16,7 +17,7 @@
         }
         
         body {
-            font-family: 'Comic Neue', cursive, 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Comic Neue', cursive, Arial, sans-serif;
             background-color: #FFF9FB;
             margin: 0;
             padding: 20px;
@@ -24,13 +25,13 @@
             justify-content: center;
             background-image: radial-gradient(var(--rosa-claro) 2px, transparent 2px);
             background-size: 20px 20px;
-            overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+            overflow-x: auto;
         }
 
         .container {
-            max-width: 1200px; /* Aumentado para acomodar melhor o conteúdo */
+            max-width: 1200px;
             width: 100%;
-            min-width: 300px; /* Garante que não fique muito estreito */
+            min-width: 300px;
             animation: fadeIn 0.8s ease;
         }
 
@@ -48,6 +49,8 @@
             position: relative;
             display: inline-block;
             width: 100%;
+            font-family: 'Comic Neue', cursive, Arial, sans-serif;
+            font-weight: 700;
         }
 
         h1:before, h1:after {
@@ -59,7 +62,7 @@
 
         .punishment-table {
             width: 100%;
-            min-width: 800px; /* Garante que a tabela não fique muito estreita */
+            min-width: 800px;
             border-collapse: separate;
             border-spacing: 0;
             box-shadow: var(--sombra);
@@ -68,7 +71,7 @@
             margin-bottom: 40px;
             background: white;
             position: relative;
-            table-layout: fixed; /* Melhora a distribuição das colunas */
+            table-layout: fixed;
         }
 
         .punishment-table:before {
@@ -111,17 +114,16 @@
             background: rgba(255,255,255,0.3);
         }
 
-        /* Ajustes nas larguras das colunas - MODIFICADO PARA AUMENTAR REINCIDÊNCIA */
-        .punishment-table th:nth-child(1) { width: 38%; } /* Infrações */
-        .punishment-table th:nth-child(2) { width: 18%; } /* Primeira Vez */
-        .punishment-table th:nth-child(3) { width: 24%; } /* Reincidência (aumentado) */
-        .punishment-table th:nth-child(4) { width: 20%; } /* Notas */
+        .punishment-table th:nth-child(1) { width: 38%; }
+        .punishment-table th:nth-child(2) { width: 18%; }
+        .punishment-table th:nth-child(3) { width: 24%; }
+        .punishment-table th:nth-child(4) { width: 20%; }
 
         .punishment-table td {
             padding: 15px;
             border-bottom: 1px solid #FFE5EE;
             position: relative;
-            word-wrap: break-word; /* Quebra palavras longas */
+            word-wrap: break-word;
         }
 
         .punishment-table tbody tr {
@@ -149,7 +151,7 @@
             padding: 5px 10px;
             border-radius: 50px;
             display: inline-block;
-            white-space: nowrap; /* Impede que o texto quebre */
+            white-space: nowrap;
         }
 
         .timeout {
@@ -159,7 +161,7 @@
             padding: 5px 10px;
             border-radius: 50px;
             display: inline-block;
-            white-space: nowrap; /* Impede que o texto quebre */
+            white-space: nowrap;
         }
 
         .note {
@@ -193,27 +195,26 @@
             font-size: 1.2em;
             min-width: 24px;
             text-align: center;
-            flex-shrink: 0; /* Impede que o ícone diminua */
-            color: var(--rosa-escuro); /* TODOS OS ÍCONES EM ROSA */
+            flex-shrink: 0;
+            color: var(--rosa-escuro);
         }
 
         .warning {
-            color: var(--rosa-escuro); /* Alterado para rosa */
+            color: var(--rosa-escuro);
         }
 
         .danger {
-            color: var(--rosa-escuro); /* Já estava rosa */
+            color: var(--rosa-escuro);
         }
 
         .info {
-            color: var(--rosa-escuro); /* Alterado para rosa */
+            color: var(--rosa-escuro);
         }
 
         .entertainment {
-            color: var(--rosa-escuro); /* Alterado para rosa */
+            color: var(--rosa-escuro);
         }
 
-        /* Estilos para a expansão de detalhes */
         .details-row {
             display: none;
         }
@@ -257,7 +258,7 @@
             
             .punishment-table th:nth-child(1) { width: 35%; }
             .punishment-table th:nth-child(2) { width: 18%; }
-            .punishment-table th:nth-child(3) { width: 24%; } /* Ajuste para mobile */
+            .punishment-table th:nth-child(3) { width: 24%; }
             .punishment-table th:nth-child(4) { width: 23%; }
         }
 
@@ -272,7 +273,7 @@
             
             .punishment-table {
                 border-radius: 12px;
-                min-width: 600px; /* Permite rolagem horizontal */
+                min-width: 600px;
             }
             
             .punishment-table th, 
@@ -538,23 +539,18 @@
             const infractionRows = document.querySelectorAll('.infraction-row');
             
             infractionRows.forEach(row => {
-                // Adiciona o evento de clique à célula da infração
                 const infractionCell = row.querySelector('.infraction-cell');
                 infractionCell.addEventListener('click', function(e) {
-                    // Impede que o clique se propague para a linha inteira
                     e.stopPropagation();
                     
-                    // Encontra a próxima linha de detalhes
                     const detailsRow = row.nextElementSibling;
                     
-                    // Fecha todos os outros detalhes abertos primeiro
                     document.querySelectorAll('.details-row.active').forEach(openRow => {
                         if (openRow !== detailsRow) {
                             openRow.classList.remove('active');
                         }
                     });
                     
-                    // Alterna a visibilidade dos detalhes para esta linha
                     detailsRow.classList.toggle('active');
                 });
             });
